@@ -10,13 +10,13 @@ The secured processor is built upon a Load-Store Architecture (also known as reg
 The processor adheres to a strict load-store model, which offers simplified instruction format and reduced complexity in control logic. Key characteristics include:
 
 
-a. Computation: Arithmetic and logical operations are performed only on registers.
+Computation: Arithmetic and logical operations are performed only on registers.
 
 
-b. Memory Access: Memory is accessed exclusively through load and store instructions.
+Memory Access: Memory is accessed exclusively through load and store instructions.
 
 
-c. Data Flow: Data must be explicitly loaded from memory to registers before processing, and processed results must be explicitly stored back to memory.
+Data Flow: Data must be explicitly loaded from memory to registers before processing, and processed results must be explicitly stored back to memory.
 
 2. Core Modules
 The processor system, integrated within the top main module, comprises several key functional blocks:
