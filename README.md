@@ -5,7 +5,7 @@ The primary objective is to develop a functional RISC-V processor based on the R
 <img width="556" height="393" alt="image" src="https://github.com/user-attachments/assets/961b82e6-f08f-40c3-81c7-6327481df840" />
 
 ---
-##Theory and Architecture: 
+## Theory and Architecture: 
 The secured processor is built upon a Load-Store Architecture (also known as register-register architecture) and incorporates a dedicated Security Unit (Encryption Module).
 
 1. Load-Store Architecture
