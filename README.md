@@ -46,3 +46,4 @@ Encryption: Data written from registers to memory is encrypted when the target a
 
 
 Decryption: Data read from memory to registers is decrypted when the source address is between 0 and 127.
+---
