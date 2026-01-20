@@ -18,6 +18,9 @@ The primary objective is to develop a functional RISC-V processor based on the R
 ## BLOCK DIAGRAM
 <img width="556" height="393" alt="image" src="https://github.com/user-attachments/assets/961b82e6-f08f-40c3-81c7-6327481df840" />
 
+This architecture shows a **secured RISC-V processor** where a **Security Unit** is placed between the registers and memory to protect data. The **Control Unit** decodes instructions and controls data flow, the **ALU** performs operations on register data, and the **Memory Unit** handles memory access. Sensitive data is encrypted and decrypted during transfers, ensuring secure operation while maintaining the load-store architecture.
+
+
 ---
 ## Theory and Architecture: 
 The secured processor is built upon a Load-Store Architecture (also known as register-register architecture) and incorporates a dedicated Security Unit (Encryption Module).
