@@ -2,6 +2,19 @@
 The primary objective is to develop a functional RISC-V processor based on the RV32I instruction set that incorporates a Security Unit (Encryption Module). This unit is strategically placed between the memory and the register bank to enforce data security for specific, designated critical address regions, ensuring data is encrypted upon storage and decrypted upon retrieval.
 
 ---
+## Purpose
+
+- **To enhance data security** by encrypting and decrypting sensitive data during transfers between memory and registers.
+
+- **To implement a secure RISC-V RV32I processor** that follows the standard RISC-V instruction set while integrating encryption mechanisms.
+
+- **To protect critical memory regions** by selectively applying encryption based on predefined address ranges.
+
+- **To maintain simplicity and efficiency** of a load-store architecture without significantly impacting processor performance.
+
+- **To provide a scalable and modular processor design** that can be extended with advanced cryptographic features in the future.
+
+---
 ## BLOCK DIAGRAM
 <img width="556" height="393" alt="image" src="https://github.com/user-attachments/assets/961b82e6-f08f-40c3-81c7-6327481df840" />
 
@@ -47,20 +60,6 @@ Encryption: Data written from registers to memory is encrypted when the target a
 
 
 Decryption: Data read from memory to registers is decrypted when the source address is between 0 and 127.
-
----
-## Purpose
-
-- **To enhance data security** by encrypting and decrypting sensitive data during transfers between memory and registers.
-
-- **To implement a secure RISC-V RV32I processor** that follows the standard RISC-V instruction set while integrating encryption mechanisms.
-
-- **To protect critical memory regions** by selectively applying encryption based on predefined address ranges.
-
-- **To maintain simplicity and efficiency** of a load-store architecture without significantly impacting processor performance.
-
-- **To provide a scalable and modular processor design** that can be extended with advanced cryptographic features in the future.
-
 
 ---
 
