@@ -60,3 +60,6 @@ Decryption: Data read from memory to registers is decrypted when the source addr
 -**To maintain simplicity and efficiency of a load-store architecture without significantly impacting processor performance.**
 
 -**To provide a scalable and modular processor design that can be extended with advanced cryptographic features in the future.**
+
+---
+
