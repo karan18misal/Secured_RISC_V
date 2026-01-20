@@ -35,7 +35,7 @@ The secured processor is built upon a Load-Store Architecture (also known as reg
 -  Data Flow: Data must be explicitly loaded from memory to registers before processing, and processed results must be explicitly stored back to memory.
 
 ## 2. Core Modules
--The processor system, integrated within the top main module, comprises several key functional blocks:
+# The processor system, integrated within the top main module, comprises several key functional blocks:
 
 
 - Control Unit: Serves as the decision-making center, generating all necessary control signals (like alu_ctrl, wenable, renable) based on the instruction's opcode.
