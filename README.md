@@ -2,6 +2,7 @@
 The primary objective is to develop a functional RISC-V processor based on the RV32I instruction set that incorporates a Security Unit (Encryption Module). This unit is strategically placed between the memory and the register bank to enforce data security for specific, designated critical address regions, ensuring data is encrypted upon storage and decrypted upon retrieval.
 <img width="556" height="393" alt="image" src="https://github.com/user-attachments/assets/961b82e6-f08f-40c3-81c7-6327481df840" />
 
+---
 
 💡 Theory and Architecture: 
 The secured processor is built upon a Load-Store Architecture (also known as register-register architecture) and incorporates a dedicated Security Unit (Encryption Module).
