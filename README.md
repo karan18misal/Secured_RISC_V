@@ -63,3 +63,33 @@ The secured processor is built upon a Load-Store Architecture (also known as reg
 
 ---
 
+## Use Cases
+
+- **Secure Embedded Systems**  
+  The processor can be used in embedded applications where sensitive configuration data or control information must be protected from unauthorized memory access.
+
+- **Internet of Things (IoT) Devices**  
+  Suitable for IoT systems that handle confidential sensor data and require lightweight, hardware-level security with minimal performance overhead.
+
+- **Edge Computing Applications**  
+  Enables secure local processing by encrypting critical data stored in memory, reducing the risk of data leakage at edge nodes.
+
+- **Academic and Research Platforms**  
+  Serves as an educational and research-oriented processor for studying secure RISC-V architectures, encryption techniques, and hardware-based security mechanisms.
+
+- **Industrial Automation Systems**  
+  Can be deployed in industrial controllers to safeguard operational data, firmware, and control logic against tampering and reverse engineering.
+
+---
+
+## Limitations
+
+**Simple encryption mechanism**
+
+**Fixed address range for security**
+
+**Static key management**
+
+**Performance overhead due to encryption**
+
+**Limited RV32I instruction set support**
