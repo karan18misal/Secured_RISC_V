@@ -13,7 +13,7 @@ module registers(
     output [15:0] key_access
 );
 
-    reg [31:0] memory [1023:0];
+    reg [31:0] memory [31:0];
     
 
 
