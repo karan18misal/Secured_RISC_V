@@ -1,10 +1,13 @@
 module immediate_generator (
-    input [31:0] instruction, // 32-bit instruction
-    output reg [31:0] immediate // Sign-extended immediate
+    input [31:0] instruction,
+    input [31:0]read_reg2,
+    input alu_src,
+    output [31:0] read_reg_i
 );
 
     wire [6:0] opcode = instruction[6:0];
-    
+    wire [31:0]immediate,
+    assign read_reg_i = alu_src ? immediate : read_reg2;
     always @(*) begin
         case (opcode)
             7'b0010011: begin // I-type (addi)
