@@ -49,6 +49,14 @@ module processor(
               .alu_src(alu_src),
               .read_reg_i(read_reg_i)
   );
+  alu alu_unit(
+              .a(read_reg),
+              .b(read_reg_i),
+              .alu_ctrl(alu_ctrl),
+              .result(write_data_alu),
+              .zero(alu_zero)
+  );
+
 
 
 
