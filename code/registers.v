@@ -21,11 +21,14 @@ module registers(
 
 
     always @(posedge clk) begin
-        
+        if(load_on)
             memory[address_mem] <= write_data_mem;
+        if(alu_op_on) begin
             memory[address_alu] <= write_data_alu;
             read_reg1 <= memory[reg1];
             read_reg2 <= memory[reg2];
+        end
+        if(store_on)
             memory_out <= memory[address_to_mem];
     end
 
