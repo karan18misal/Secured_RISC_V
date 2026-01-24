@@ -56,8 +56,7 @@ module processor(
               .result(write_data_alu),
               .zero(alu_zero)
   );
-
-
+  wire [31:0] alu_or_pc = jump ? pc_plus4 : alu_result;
 
 
   
