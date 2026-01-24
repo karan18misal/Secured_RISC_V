@@ -4,7 +4,22 @@ module processor(
   input [31:0]data_in,
   output [31:0] data_out_mem
 );
+  
+  program_counter pc_unit(
+              .clk(clk),
+              .rst(rst),
+              .branch(branch),
+              .jump(jump),
+              .alu_zero(alu_zero),
+              .immediate(immediate),
+              .pc(pc),
+              .pc_plus4(pc_plus4)
+  );
 
+  instruction_memory im(
+              .pc(pc),
+              .instruction(instruction)
+  );
   control_unit cu(
               .instruction(instruction),
               .alu_op_on(alu_op_on),
