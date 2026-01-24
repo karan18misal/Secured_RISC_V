@@ -36,37 +36,38 @@ module control_unit(
     wire [6:0] funct7 = instruction[31:25];
     
     always @(*) begin
-        R_TYPE: begin
-            alu_src = 1'b0;
-            alu_op_on = 1'b1;
-            address_alu <= rd;
-            reg1 <= rs1;
-            reg2 <= rs2;
-            if (funct3 == 3'b000) begin
-                    if (funct7 == 7'b0000000)
-                        alu_ctrl = 4'b0000;
-                    else if (funct7 == 7'b0100000)
-                        alu_ctrl = 4'b0001;
-                end
-        end
-        
-        I_TYPE: begin
-                reg1 <= rs1;
-                alu_op_on = 1'b1;
-                alu_src = 1'b1;
-                if (funct3 == 3'b000)
-                    alu_ctrl = 4'b0000;
-            end
-        
-        BRANCH: begin 
-                branch = 1'b1;
+        case (opcode)
+            R_TYPE: begin
                 alu_src = 1'b0;
-                alu_ctrl = 4'b0001;
+                alu_op_on = 1'b1;
+                address_alu <= rd;
+                reg1 <= rs1;
+                reg2 <= rs2;
+                if (funct3 == 3'b000) begin
+                        if (funct7 == 7'b0000000)
+                            alu_ctrl = 4'b0000;
+                        else if (funct7 == 7'b0100000)
+                            alu_ctrl = 4'b0001;
+                    end
             end
-        JAL: begin
-                load_on = 1'b1;
-                jump = 1'b1;
-            end
-        
+            
+            I_TYPE: begin
+                    reg1 <= rs1;
+                    alu_op_on = 1'b1;
+                    alu_src = 1'b1;
+                    if (funct3 == 3'b000)
+                        alu_ctrl = 4'b0000;
+                end
+            
+            BRANCH: begin 
+                    branch = 1'b1;
+                    alu_src = 1'b0;
+                    alu_ctrl = 4'b0001;
+                end
+            JAL: begin
+                    load_on = 1'b1;
+                    jump = 1'b1;
+                end
+        endcase
     end
 endmodule
