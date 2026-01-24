@@ -1,107 +1,72 @@
 module control_unit(
-    input [4:0] opcode,
-    output reg [3:0] alu_ctrl,
-    output reg wenable,
-    output reg renable,
-    output reg wenable_reg,
-    output reg renable_reg,
-    output reg wenable_mem,
-    output reg renable_mem,
-    output reg wenable_alu,
-    output reg renable_alu
+    input [31:0]instruction; 
+    output alu_op_on;
+    output load_on;
+    output store_on;
+    output wenable,
+    output renable,
+    output wenable_reg,
+    output renable_reg,
+    output jump,
+    output branch,
+    output alu_src,
+    output [4:0] reg1,
+    output [4:0] reg2,
+    output [4:0] address_mem,
+    output [4:0] address_alu,
+    output [4:0] address_to_mem,
+    output [9:0] read_address,
+    output [9:0] write_address,
+    output [9:0] read_address_reg,
+    output [9:0] write_address_reg,
+    output [3:0] alu_ctrl
 );
-
-    parameter IDLE         = 5'b00000;
-    parameter LOAD_STORE   = 5'b00001;
-    parameter memory_access= 5'b00010;
-    parameter ADD          = 5'b00011;
-    parameter SUB          = 5'b00100;
-    parameter AND          = 5'b00101;
-    parameter OR           = 5'b00110;
-    parameter XOR          = 5'b00111;
-    parameter SLT          = 5'b01000;
-    parameter SLTU         = 5'b01001;
-
+    parameter R_TYPE = 7'b0110011; // add, sub
+    parameter I_TYPE = 7'b0010011; // addi
+    parameter LOAD = 7'b0000011; // lw
+    parameter STORE = 7'b0100011; // sw
+    parameter BRANCH = 7'b1100011; // beq
+    parameter JAL = 7'b1101111; // jal
+    
+    wire [6:0] opcode = instruction[6:0];
+    wire [4:0] rd = instruction[11:7];
+    wire [2:0] funct3 = instruction[14:12];
+    wire [4:0] rs1 = instruction[19:15];
+    wire [4:0] rs2 = instruction[24:20];
+    wire [6:0] funct7 = instruction[31:25];
+    
     always @(*) begin
-        case(opcode)
-            IDLE: begin
-                alu_ctrl = 4'b1111;
-                wenable = 0; renable = 0;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 0; renable_alu = 0;
+        R_TYPE: begin
+            alu_src = 1'b0;
+            alu_op_on = 1'b1;
+            address_alu <= rd;
+            reg1 <= rs1;
+            reg2 <= rs2;
+            if (funct3 == 3'b000) begin
+                    if (funct7 == 7'b0000000)
+                        alu_ctrl = 4'b0000;
+                    else if (funct7 == 7'b0100000)
+                        alu_ctrl = 4'b0001;
+                end
+        end
+        
+        I_TYPE: begin
+                reg1 <= rs1;
+                alu_op_on = 1'b1;
+                alu_src = 1'b1;
+                if (funct3 == 3'b000)
+                    alu_ctrl = 4'b0000;
             end
-            LOAD_STORE: begin
-                alu_ctrl = 4'b1111;
-                wenable = 0; renable = 0;
-                wenable_reg = 1; renable_reg = 1;
-                wenable_mem = 1; renable_mem = 1;
-                wenable_alu = 0; renable_alu = 0;
-            end
-            memory_access: begin
-                alu_ctrl = 4'b1111;
-                wenable = 1; renable = 1;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 0; renable_alu = 0;
-            end
-            ADD: begin
-                alu_ctrl = 4'b0000;
-                wenable = 0; renable = 0;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 1; renable_alu = 1;
-            end
-            SUB: begin
+        
+        BRANCH: begin 
+                branch = 1'b1;
+                alu_src = 1'b0;
                 alu_ctrl = 4'b0001;
-                wenable = 0; renable = 0;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 1; renable_alu = 1;
             end
-            AND: begin
-                alu_ctrl = 4'b0010;
-                wenable = 0; renable = 0;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 1; renable_alu = 1;
+        JAL: begin
+                load_on = 1'b1;
+                jump = 1'b1;
             end
-            OR: begin
-                alu_ctrl = 4'b0011;
-                wenable = 0; renable = 0;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 1; renable_alu = 1;
-            end
-            XOR: begin
-                alu_ctrl = 4'b0100;
-                wenable = 0; renable = 0;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 1; renable_alu = 1;
-            end
-            SLT: begin
-                alu_ctrl = 4'b0101;
-                wenable = 0; renable = 0;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 1; renable_alu = 1;
-            end
-            SLTU: begin
-                alu_ctrl = 4'b0110;
-                wenable = 0; renable = 0;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 1; renable_alu = 1;
-            end
-            default: begin
-                alu_ctrl = 4'b1111;
-                wenable = 0; renable = 0;
-                wenable_reg = 0; renable_reg = 0;
-                wenable_mem = 0; renable_mem = 0;
-                wenable_alu = 0; renable_alu = 0;
-            end
-        endcase
+        
     end
 endmodule
-
