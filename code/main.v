@@ -43,7 +43,13 @@ module processor(
               .write_address_reg(write_address_reg),
               .alu_ctrl(alu_ctrl)
   );
-  
+  immediate_generator ig(
+              .instruction(instruction),
+              .read_reg2(read_reg2),
+              .alu_src(alu_src),
+              .read_reg_i(read_reg_i)
+  );
+
 
 
   
