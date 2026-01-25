@@ -7,9 +7,9 @@ module registers(
     input [4:0] address_to_mem,
     input [31:0] write_data_mem,
     input [31:0] write_data_alu,
-    input alu_op_on;
-    input load_on;
-    input store_on;
+    input alu_op_on,
+    input load_on,
+    input store_on,
     output reg [31:0] read_reg1,
     output reg [31:0] read_reg2,
     output reg [31:0] memory_out,
