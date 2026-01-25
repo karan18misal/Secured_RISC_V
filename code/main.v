@@ -67,7 +67,7 @@ module processor(
                 .key_access(key_access_reg)
     );
     security sec(
-                .data_in_memory(data_in_memory),
+                .data_in_memory(data_out_reg_go),
                 .data_in_reg(data_in_reg),
                 .key_access_mem(key_access_mem),
                 .key_access_reg(key_access_reg),
@@ -76,6 +76,23 @@ module processor(
                 .data_out_mem(data_out_mem),
                 .data_out_reg(data_out_reg)
   );
+  memory mem(
+                .clk(clk),
+                .data_in(data_in),
+                .read_address(read_address),
+                .write_address(write_address),
+                .data_in_reg(data_out_mem),
+                .read_address_reg(read_address_reg),
+                .write_address_reg(write_address_reg),
+                .wenable(wenable),
+                .renable(renable),
+                .wenable_reg(wenable_reg),
+                .renable_reg(renable_reg),
+                .data_out(data_out),
+                .data_out_reg(data_out_reg_go),
+                .key_access(key_access_mem)
+  );
+
 
   
   alu alu_unit(
