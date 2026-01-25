@@ -63,9 +63,20 @@ module processor(
                 .store_on(store_on),
                 .read_reg1(read_reg1),
                 .read_reg2(read_reg2),
-                .memory_out(memory_out),
-                .key_access(key_access)
+                .memory_out(data_in_reg),
+                .key_access(key_access_reg)
     );
+    security sec(
+                .data_in_memory(data_in_memory),
+                .data_in_reg(data_in_reg),
+                .key_access_mem(key_access_mem),
+                .key_access_reg(key_access_reg),
+                .read_address(read_address),
+                .write_address(write_address),
+                .data_out_mem(data_out_mem),
+                .data_out_reg(data_out_reg)
+  );
+
   
   alu alu_unit(
               .a(read_reg),
