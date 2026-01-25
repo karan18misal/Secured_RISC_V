@@ -29,16 +29,18 @@ module processor(
 
   wire [31:0] data_out;
   wire key_access_mem;
-
+    
   wire [4:0] reg1;
   wire [4:0] reg2;
-  wire [4:0] address_mem;
   wire [4:0] address_alu;
   wire [4:0] address_to_mem;
-  wire [4:0] read_address;
-  wire [4:0] write_address;
-  wire [4:0] read_address_reg;
-  wire [4:0] write_address_reg;
+  wire [4:0] address_mem;
+    
+  wire [9:0] read_address_reg;
+  wire [9:0] write_address_reg;
+  wire [9:0] read_address;
+  wire [9:0] write_address;
+
 
   wire [31:0] alu_result;
   wire alu_zero;
