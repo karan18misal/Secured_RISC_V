@@ -49,6 +49,24 @@ module processor(
               .alu_src(alu_src),
               .read_reg_i(read_reg_i)
   );
+  registers rf(
+                .clk(clk),
+                .reg1(reg1),
+                .reg2(reg2),
+                .address_mem(address_mem),
+                .address_alu(address_alu),
+                .address_to_mem(address_to_mem),
+                .write_data_mem(write_data_mem),
+                .write_data_alu(write_data_alu),
+                .alu_op_on(alu_op_on),
+                .load_on(load_on),
+                .store_on(store_on),
+                .read_reg1(read_reg1),
+                .read_reg2(read_reg2),
+                .memory_out(memory_out),
+                .key_access(key_access)
+    );
+  
   alu alu_unit(
               .a(read_reg),
               .b(read_reg_i),
