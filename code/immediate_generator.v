@@ -6,7 +6,7 @@ module immediate_generator (
 );
 
     wire [6:0] opcode = instruction[6:0];
-    wire [31:0]immediate,
+    wire [31:0]immediate;
     assign read_reg_i = alu_src ? immediate : read_reg2;
     always @(*) begin
         case (opcode)
