@@ -35,6 +35,7 @@ module control_unit(
     wire [4:0] rs1    = instruction[19:15];
     wire [4:0] rs2    = instruction[24:20];
     wire [6:0] funct7 = instruction[31:25];
+    wire [9:0] mem_add = instruction[24:15]; 
 
     always @(*) begin
         alu_op_on       = 1'b0;
@@ -84,6 +85,20 @@ module control_unit(
 
                 if (funct3 == 3'b000)
                     alu_ctrl = 4'b0000;
+            end
+
+            LOAD: begin
+                read_address_reg = mem_add;
+                renable_reg = 1'b1;
+                load_on = 1'b1;
+                address_mem = rd;
+            end
+
+            STORE: begin
+                write_address_reg = mem_add;
+                wenable_reg = 1'b1;
+                store_on = 1'b1;
+                address_to_mem = rd;
             end
 
             BRANCH: begin
