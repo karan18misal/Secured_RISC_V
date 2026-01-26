@@ -20,8 +20,7 @@ The primary objective is to develop a functional RISC-V processor based on the R
 <img width="2000" height="1414" alt="SECURED RISC V SINGLE CYCLE PROCESSOR" src="https://github.com/user-attachments/assets/e1acb5a3-e133-4946-b221-ef51214e22fe" />
 
 
-This architecture shows a **secured RISC-V processor** where a **Security Unit** is placed between the registers and memory to protect data. The **Control Unit** decodes instructions and controls data flow, the **ALU** performs operations on register data, and the **Memory Unit** handles memory access. Sensitive data is encrypted and decrypted during transfers, ensuring secure operation while maintaining the load-store architecture.
-
+The architecture implements a **secured RISC-V processor** with integrated data protection. The **PC** and **Instruction Memory** manage instruction sequencing, while the **Control Unit** generates control signals for all modules. Computation is handled by the **Register File**, **Immediate Generator**, and **ALU** following a load-store model. A **Security module** between the registers and memory provides encryption and decryption during data transfers, and the **Memory unit** connects to main memory to ensure secure data storage.
 
 ---
 ## Theory and Architecture: 
