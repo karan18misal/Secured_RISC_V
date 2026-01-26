@@ -44,7 +44,7 @@ The secured processor is built upon a Load-Store Architecture (also known as reg
 - Control Unit: Serves as the decision-making center, generating all necessary control signals (like alu_ctrl, wenable, renable) based on the instruction's opcode.
 
 
-- Registers Module (Register Bank): A synchronous memory access system (1024-word, 32-bit words) that sustains multiple read and write operations in a single clock cycle.
+- Registers Module (Register Bank): 32 general purpose 32 bit registers that sustains multiple read and write operations in a single clock cycle.
 
 
 -  Memory Module: A dual-access synchronous memory system (1024-word, 32-bit words) with an inbuilt access key mechanism.
