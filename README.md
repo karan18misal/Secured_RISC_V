@@ -112,6 +112,23 @@ Opcode = 7'b0100011
 
 Operation: Perform Store Operation
 
+### BRANCH
+|function7| Rs2 | Rs1 |funct3| Rd |opcode|
+|---------|-----|-----|------|----|------|
+|  31:25  |24:20|19:15|14:12 |11:7| 6:0  |
+
+Opcode = 7'b1100011
+
+Operation: Performs branching
+
+### JAL
+|function7| Rs2 | Rs1 |funct3| Rd |opcode|
+|---------|-----|-----|------|----|------|
+|  31:25  |24:20|19:15|14:12 |11:7| 6:0  |
+
+Opcode = 7'b1101111
+
+Operation: Performs jump
 
 ---
 
