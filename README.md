@@ -88,6 +88,31 @@ Operation: Performs ALU operations on the Registor bank
 |---------|-----|------|----|------|
 |  31:20  |19:15|14:12 |11:7| 6:0  |
 
+Opecode = 7'b0010011
+
+Immediate : A number that will be used in the process has a range 31:20(12 bits)(4096 combinations)
+
+Operation: Performs ALU operations on the Registor bank by using a number(Immediate) 
+
+### LOAD
+|function7|  Xn |funct3| Rd |opcode|
+|---------|-----|------|----|------|
+|  31:25  |24:15|14:12 |11:7| 6:0  |
+
+Opcode = 7'b0000011
+
+Operation: Perform Load Operation
+
+### STORE
+|function7|  Xn |funct3| Rs |opcode|
+|---------|-----|------|----|------|
+|  31:25  |24:15|14:12 |11:7| 6:0  |
+
+Opcode = 7'b0100011
+
+Operation: Perform Store Operation
+
+
 ---
 
 ## Use Cases
