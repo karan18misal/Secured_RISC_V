@@ -76,6 +76,7 @@ The secured processor is built upon a Load-Store Architecture (also known as reg
 ## Code Memory for different types of immediates
 ### R-Type
 |function7|Rs2|Rs1|funct3|Rd|opcode|
+|---------|---|---|------|--|------|
 
 ---
 
