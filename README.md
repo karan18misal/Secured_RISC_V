@@ -54,6 +54,10 @@ The secured processor is built upon a Load-Store Architecture (also known as reg
 -  ALU Module: Performs all arithmetic and logical operations (ADD, SUB, AND, OR, XOR, SLT, SLTU) required by the instruction set, and generates a zero flag for conditional branches.
   
 - Immediate Generator Module: The immediate generator extracts and sign-extends immediate values from different instruction formats. The module provides instruction format detection, immediate field extraction, sign extension to 32 bits, and support for all RISC-V immediate formats including I-type, S-type, B-type, U-type, and J-type.
+  
+- Instruction Memory Module: It holds a preloaded RISC-V program in a 1024-word memory.It uses the program counter (PC) to select word-aligned instructions.The selected 32-bit instruction is provided to the control unit.
+
+- Program Counter Module: It maintains the address of the current instruction. It updates the PC based on sequential execution, branch conditions, or jump control signals.The next PC value is selected using ALU results and immediate offsets, with reset support.
 
 ## 3. Security Module (Encryption Unit)
 - The security module is placed between the memory unit and the register bank to conditionally transform data during transfers.
