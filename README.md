@@ -73,6 +73,11 @@ The secured processor is built upon a Load-Store Architecture (also known as reg
 
 ---
 
+## Code Memory for different types of immediates
+###R-Type
+
+---
+
 ## Use Cases
 
 - **Secure Embedded Systems**  
