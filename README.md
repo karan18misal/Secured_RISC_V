@@ -80,6 +80,7 @@ The secured processor is built upon a Load-Store Architecture (also known as reg
 |  31:25  |24:20|19:15|14:12 |11:7| 6:0  |
 
 Opcode = 7'b0110011
+
 Operation: Performs ALU operations on the Registor bank
 
 ### I-Type
