@@ -25,10 +25,10 @@ module processor(
   wire [31:0] data_in_reg;
   wire [31:0] data_out_reg;
   wire [31:0] data_out_reg_go;
-  wire key_access_reg;
+  wire [15:0] key_access_reg;
 
   wire [31:0] data_out;
-  wire key_access_mem;
+  wire [15:0] key_access_mem;
     
   wire [4:0] reg1;
   wire [4:0] reg2;
